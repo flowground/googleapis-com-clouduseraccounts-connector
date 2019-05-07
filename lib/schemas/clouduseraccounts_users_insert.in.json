@@ -1,0 +1,102 @@
+{
+    "type": "object",
+    "properties": {
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "A User resource.",
+            "properties": {
+                "creationTimestamp": {
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional textual description of the resource; provided by the client when the resource is created.",
+                    "type": "string"
+                },
+                "groups": {
+                    "description": "[Output Only] A list of URLs to Group resources who contain the user. Users are only members of groups in the same project.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "id": {
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "clouduseraccounts#user",
+                    "description": "[Output Only] Type of the resource. Always clouduseraccounts#user for users.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the resource; provided by the client when the resource is created.",
+                    "pattern": "[a-z][-a-z0-9_]{0,31}",
+                    "type": "string"
+                },
+                "owner": {
+                    "description": "Email address of account's owner. This account will be validated to make sure it exists. The email can belong to any domain, but it must be tied to a Google account.",
+                    "type": "string"
+                },
+                "publicKeys": {
+                    "description": "[Output Only] Public keys that this user may use to login.",
+                    "items": {
+                        "description": "A public key for authenticating to guests.",
+                        "properties": {
+                            "creationTimestamp": {
+                                "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                                "type": "string"
+                            },
+                            "description": {
+                                "description": "An optional textual description of the resource; provided by the client when the resource is created.",
+                                "type": "string"
+                            },
+                            "expirationTimestamp": {
+                                "description": "Optional expiration timestamp. If provided, the timestamp must be in RFC3339 text format. If not provided, the public key never expires.",
+                                "type": "string"
+                            },
+                            "fingerprint": {
+                                "description": "[Output Only] The fingerprint of the key is defined by RFC4716 to be the MD5 digest of the public key.",
+                                "type": "string"
+                            },
+                            "key": {
+                                "description": "Public key text in SSH format, defined by RFC4253 section 6.6.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server defined URL for the resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

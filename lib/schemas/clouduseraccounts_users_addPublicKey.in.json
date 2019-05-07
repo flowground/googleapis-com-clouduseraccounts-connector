@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "properties": {
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "user": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "A public key for authenticating to guests.",
+            "properties": {
+                "creationTimestamp": {
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional textual description of the resource; provided by the client when the resource is created.",
+                    "type": "string"
+                },
+                "expirationTimestamp": {
+                    "description": "Optional expiration timestamp. If provided, the timestamp must be in RFC3339 text format. If not provided, the public key never expires.",
+                    "type": "string"
+                },
+                "fingerprint": {
+                    "description": "[Output Only] The fingerprint of the key is defined by RFC4716 to be the MD5 digest of the public key.",
+                    "type": "string"
+                },
+                "key": {
+                    "description": "Public key text in SSH format, defined by RFC4253 section 6.6.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

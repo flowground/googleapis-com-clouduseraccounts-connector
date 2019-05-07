@@ -1,0 +1,219 @@
+{
+    "type": "object",
+    "properties": {
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "resource": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies for Cloud Platform resources.\n\n\n\nA `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of permissions defined by IAM.\n\n**Example**\n\n{ \"bindings\": [ { \"role\": \"roles/owner\", \"members\": [ \"user:mike@example.com\", \"group:admins@example.com\", \"domain:google.com\", \"serviceAccount:my-other-app@appspot.gserviceaccount.com\", ] }, { \"role\": \"roles/viewer\", \"members\": [\"user:sean@example.com\"] } ] }\n\nFor a description of IAM and its features, see the [IAM developer's guide](https://cloud.google.com/iam).",
+            "properties": {
+                "auditConfigs": {
+                    "description": "Specifies audit logging configs for \"data access\". \"data access\": generally refers to data reads/writes and admin reads. \"admin activity\": generally refers to admin writes.\n\nNote: `AuditConfig` doesn't apply to \"admin activity\", which always enables audit logging.",
+                    "items": {
+                        "description": "Enables \"data access\" audit logging for a service and specifies a list of members that are log-exempted.",
+                        "properties": {
+                            "exemptedMembers": {
+                                "description": "Specifies the identities that are exempted from \"data access\" audit logging for the `service` specified above. Follows the same format of Binding.members.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "service": {
+                                "description": "Specifies a service that will be enabled for \"data access\" audit logging. For example, `resourcemanager`, `storage`, `compute`. `allServices` is a special value that covers all services.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "bindings": {
+                    "description": "Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same `role`. `bindings` with no members will result in an error.",
+                    "items": {
+                        "description": "Associates `members` with a `role`.",
+                        "properties": {
+                            "members": {
+                                "description": "Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@gmail.com` or `joe@example.com`.\n\n* `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.\n\n* `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example, `google.com` or `example.com`.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "role": {
+                                "description": "Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "etag": {
+                    "description": "`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten blindly.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "iamOwned": {
+                    "description": "",
+                    "type": "boolean"
+                },
+                "rules": {
+                    "description": "If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.",
+                    "items": {
+                        "description": "A rule to be applied in a Policy.",
+                        "properties": {
+                            "action": {
+                                "description": "Required",
+                                "enum": [
+                                    "ALLOW",
+                                    "ALLOW_WITH_LOG",
+                                    "DENY",
+                                    "DENY_WITH_LOG",
+                                    "LOG",
+                                    "NO_ACTION"
+                                ],
+                                "type": "string"
+                            },
+                            "conditions": {
+                                "description": "Additional restrictions that must be met",
+                                "items": {
+                                    "description": "A condition to be met.",
+                                    "properties": {
+                                        "iam": {
+                                            "description": "Trusted attributes supplied by the IAM system.",
+                                            "enum": [
+                                                "ATTRIBUTION",
+                                                "AUTHORITY",
+                                                "NO_ATTR"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "op": {
+                                            "description": "An operator to apply the subject with.",
+                                            "enum": [
+                                                "DISCHARGED",
+                                                "EQUALS",
+                                                "IN",
+                                                "NOT_EQUALS",
+                                                "NOT_IN",
+                                                "NO_OP"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "svc": {
+                                            "description": "Trusted attributes discharged by the service.",
+                                            "type": "string"
+                                        },
+                                        "sys": {
+                                            "description": "Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.",
+                                            "enum": [
+                                                "IP",
+                                                "NAME",
+                                                "NO_ATTR",
+                                                "REGION",
+                                                "SERVICE"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "The object of the condition. Exactly one of these must be set.",
+                                            "type": "string"
+                                        },
+                                        "values": {
+                                            "description": "The objects of the condition. This is mutually exclusive with 'value'.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "description": {
+                                "description": "Human-readable description of the rule.",
+                                "type": "string"
+                            },
+                            "ins": {
+                                "description": "The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in this set of entries.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "logConfigs": {
+                                "description": "The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.",
+                                "items": {
+                                    "description": "Specifies what kind of log the caller must write",
+                                    "properties": {
+                                        "counter": {
+                                            "description": "Counter options.",
+                                            "properties": {
+                                                "field": {
+                                                    "description": "The field value to attribute.",
+                                                    "type": "string"
+                                                },
+                                                "metric": {
+                                                    "description": "The metric to update.",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "notIns": {
+                                "description": "The rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is not in this set of entries.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "permissions": {
+                                "description": "A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "version": {
+                    "description": "Version of the `Policy`. The default version is 0.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

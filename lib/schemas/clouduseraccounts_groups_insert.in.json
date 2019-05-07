@@ -1,0 +1,68 @@
+{
+    "type": "object",
+    "properties": {
+        "project": {
+            "required": true,
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "A Group resource.",
+            "properties": {
+                "creationTimestamp": {
+                    "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An optional textual description of the resource; provided by the client when the resource is created.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+                    "format": "uint64",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "clouduseraccounts#group",
+                    "description": "[Output Only] Type of the resource. Always clouduseraccounts#group for groups.",
+                    "type": "string"
+                },
+                "members": {
+                    "description": "[Output Only] A list of URLs to User resources who belong to the group. Users may only be members of groups in the same project.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "name": {
+                    "description": "Name of the resource; provided by the client when the resource is created.",
+                    "pattern": "[a-z][-a-z0-9_]{0,31}",
+                    "type": "string"
+                },
+                "selfLink": {
+                    "description": "[Output Only] Server defined URL for the resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
